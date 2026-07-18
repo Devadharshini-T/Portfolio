@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<HTML>
+<Head>
+<Title>Registration Form</Title>
+</Head>
+<body>
+<form>
+<LABEL>
+<fieldset>
+<legend>Personal Information</legend>
+First name:<input type ="text" name="firstname"/>
+<br/>
+Last name:<input type="text" name="lastname"/>
+Address:<Textarea name="comment">enter address</Textarea>
+Birthday:<input type="date" name="bday">
+</fieldset>
+Languages Known:<input type="checkbox" name="Language" value="English"/>
+<input type="checkbox" name="Language" value="Japaneese"/>
+<input type="checkbox" name="Language" value="German"/>
+<input type="checkbox" name="Language" value="French"/>
+Email: <input type="email" name="email">
+<input type="submit">
+Courses:<Select>
+<optgroup>
+<option>IT</option>
+<option>CSE</option>
+</optgroup>
+<optgroup>
+<option>Civil</option>
+<option>Mech</option>
+</optgroup>
+Phone number:<input type="number" name="phone number" min="10" max="10">
+<input type="submit">
+Salary:<input type="range" name="salary" min="10000" max="50000">
+<input type="submit" value="Register">
+<input type="reset">
+</form>
+</body>
+</HTML>
