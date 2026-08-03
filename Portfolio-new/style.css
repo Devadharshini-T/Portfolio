@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-h1 {
-    color: blue;
-}
-
-p {
-    color: red;
-=======
 /* ==============================
    CSS VARIABLES - LIGHT THEME
 ================================ */
@@ -212,5 +204,4 @@ footer {
         background-color: #334155;
         color: white;
     }
->>>>>>> d3639643d43d2110f03783e8d5600aacbfc93d1d
 }
