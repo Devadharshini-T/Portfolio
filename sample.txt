@@ -1,0 +1,15 @@
+<!Doctype html>
+<html>
+<body>
+<script type="text/javascript">
+var a= 50;
+var b=40;
+var c="Test";
+var linebreak="<br/>";
+ document.write("a+b= ");
+result=a+b;
+document.write(result);
+document.write(linebreak);
+</script>
+</body>
+</html>

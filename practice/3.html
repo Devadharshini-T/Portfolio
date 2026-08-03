@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Connect</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        /* Header */
+        header {
+            background-color: #5b4fcf;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* Main Container */
+        .container {
+            width: 600px;
+            margin: 30px auto;
+        }
+
+        /* Create Post */
+        .create-post {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 95%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: none;
+            font-size: 15px;
+        }
+
+        .post-btn {
+            background-color: #5b4fcf;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .post-btn:hover {
+            background-color: #4538b5;
+        }
+
+        /* Posts */
+        .post {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .user {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .username {
+            color: gray;
+            font-size: 14px;
+        }
+
+        .post-content {
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .message {
+            color: green;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h2>SocialConnect</h2>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Explore</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+
+        <!-- Create Post -->
+        <div class="create-post">
+
+            <h3>Create a Post</h3>
+
+            <textarea
+                id="postInput"
+                rows="4"
+                placeholder="What's on your mind?"></textarea>
+
+            <br>
+
+            <button class="post-btn" onclick="addPost()">
+                Post
+            </button>
+
+            <p id="message" class="message"></p>
+
+        </div>
+
+
+        <!-- Feed -->
+        <div id="postFeed">
+
+            <div class="post">
+
+                <div class="user">
+                    Priya
+                </div>
+
+                <div class="username">
+                    @priya
+                </div>
+
+                <p class="post-content">
+                    Hello everyone! Welcome to SocialConnect 😊
+                </p>
+
+                <button class="like-btn" onclick="likePost(this)">
+                    🤍 Like
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Function to add a new post
+        function addPost() {
+
+            // Get text from textarea
+            let postInput = document.getElementById("postInput");
+
+            let postText = postInput.value.trim();
+
+            // Check empty post
+            if (postText === "") {
+                alert("Please write something before posting!");
+                return;
+            }
+
+            // Create new post
+            let newPost = document.createElement("div");
+
+            newPost.className = "post";
+
+            newPost.innerHTML = `
+                <div class="user">
+                    Devadharshini
+                </div>
+
+                <div class="username">
+                    @devadharshini
+                </div>
+
+                <p class="post-content">
+                    ${postText}
+                </p>
+
+                <button class="like-btn" onclick="likePost(this)">
+                    🤍 Like
+                </button>
+            `;
+
+            // Add new post at top of feed
+            let postFeed = document.getElementById("postFeed");
+
+            postFeed.prepend(newPost);
+
+            // Clear textarea
+            postInput.value = "";
+
+            // Show message
+            document.getElementById("message").innerText =
+                "Post published successfully!";
+
+            // Remove message after 2 seconds
+            setTimeout(function() {
+                document.getElementById("message").innerText = "";
+            }, 2000);
+        }
+
+
+        // Like and Unlike Function
+        function likePost(button) {
+
+            if (button.innerHTML.includes("🤍")) {
+
+                button.innerHTML = "❤️ Liked";
+
+            } else {
+
+                button.innerHTML = "🤍 Like";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

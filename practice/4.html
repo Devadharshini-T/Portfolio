@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevaConnect</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7fb;
+        }
+
+        /* Header */
+        header {
+            background-color: #7c3aed;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .container {
+            width: 600px;
+            max-width: 90%;
+            margin: 30px auto;
+        }
+
+        /* Profile */
+        .profile {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .profile-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .profile h2 {
+            margin-bottom: 5px;
+        }
+
+        .profile p {
+            color: gray;
+            margin-top: 5px;
+        }
+
+        /* Create Post */
+        .create-post {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .create-post h3 {
+            margin-top: 0;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            resize: none;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #7c3aed;
+        }
+
+        .post-button {
+            background-color: #7c3aed;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .post-button:hover {
+            background-color: #6425c7;
+        }
+
+        /* Post */
+        .post {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .small-icon {
+            width: 45px;
+            height: 45px;
+            background-color: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .name {
+            font-weight: bold;
+        }
+
+        .username {
+            color: gray;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        .post-content {
+            margin: 18px 0;
+            line-height: 1.5;
+        }
+
+        .like-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h2>DevaConnect</h2>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Feed</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+
+        <!-- Profile -->
+        <div class="profile">
+
+            <div class="profile-icon">
+                D
+            </div>
+
+            <h2>Devadharshini</h2>
+
+            <p>@devadharshini</p>
+
+            <p>💻 IT Student | Web Development Learner</p>
+
+        </div>
+
+
+        <!-- Create Post -->
+        <div class="create-post">
+
+            <h3>What's on your mind, Devadharshini?</h3>
+
+            <textarea
+                id="postInput"
+                rows="4"
+                placeholder="Share something with your followers..."></textarea>
+
+            <button
+                class="post-button"
+                onclick="addPost()">
+                Post
+            </button>
+
+            <p id="message" class="success"></p>
+
+        </div>
+
+
+        <!-- Feed -->
+        <div id="postFeed">
+
+            <div class="post">
+
+                <div class="user-info">
+
+                    <div class="small-icon">
+                        
+                    </div>
+
+                    <div>
+                        <div class="name">
+                            Devadharshini
+                        </div>
+
+                        <div class="username">
+                            @devadharshini
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="post-content">
+                    Hello everyone! 👋 Welcome to my DevaConnect profile.
+                </p>
+
+                <button
+                    class="like-button"
+                    onclick="likePost(this)">
+                    🤍 Like
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function addPost() {
+
+            let postInput =
+                document.getElementById("postInput");
+
+            let postText =
+                postInput.value.trim();
+
+
+            // Check if post is empty
+            if (postText === "") {
+
+                alert("Please write something!");
+
+                return;
+            }
+
+
+            // Create new post
+            let newPost =
+                document.createElement("div");
+
+            newPost.className = "post";
+
+
+            newPost.innerHTML = `
+
+                <div class="user-info">
+
+                    <div class="small-icon">
+                        
+                    </div>
+
+                    <div>
+
+                        <div class="name">
+                            Devadharshini
+                        </div>
+
+                        <div class="username">
+                            @devadharshini
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <p class="post-content">
+                    ${postText}
+                </p>
+
+
+                <button
+                    class="like-button"
+                    onclick="likePost(this)">
+                    🤍 Like
+                </button>
+
+            `;
+
+
+            // Add post to feed
+            document
+                .getElementById("postFeed")
+                .prepend(newPost);
+
+
+            // Clear textarea
+            postInput.value = "";
+
+
+            // Success message
+            document
+                .getElementById("message")
+                .innerText =
+                "Your post has been published successfully!";
+
+
+            // Remove success message
+            setTimeout(function() {
+
+                document
+                    .getElementById("message")
+                    .innerText = "";
+
+            }, 2000);
+
+        }
+
+
+        // Like Function
+        function likePost(button) {
+
+            if (button.innerHTML.includes("🤍")) {
+
+                button.innerHTML =
+                    "❤️ Liked";
+
+            }
+
+            else {
+
+                button.innerHTML =
+                    "🤍 Like";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
